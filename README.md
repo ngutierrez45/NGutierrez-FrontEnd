@@ -7,7 +7,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
-
+STEPS
+1. Download this repository
+2. Open in text editor of choice(I used Vistual Studio Code)
+3. In terminal enter cd my-react-app
+4. Then enter npm start
+5. Now that the React app is running, the link below launches the page, makes an API fetch to the backend and prints the Hello world string
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
