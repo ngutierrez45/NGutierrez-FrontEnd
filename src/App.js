@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("https://ngutierrez-backend.onrender.com/api")
+    fetch("/api")
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
