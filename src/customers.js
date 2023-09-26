@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./customers.css";
 import { customerSearch } from "./functions";
+import Popup from 'reactjs-popup';
+import { speak, begone } from "./functions";
 
 function Customers() {
   useEffect(() => {
@@ -9,8 +11,10 @@ function Customers() {
     const idchoice = document.getElementById("chooseid");
     const fnamechoice = document.getElementById("choosefname");
     const lnamechoice = document.getElementById("chooselname");
- 
-   cusbutton.addEventListener("click", () =>{customerSearch(idchoice.innerHTML, fnamechoice.innerHTML, lnamechoice.innerHTML)});
+    
+   cusbutton.addEventListener("click", () =>{customerSearch(idchoice.value, fnamechoice.value, lnamechoice.value)});
+  
+   
   }, []);
 
    return (
@@ -33,8 +37,32 @@ function Customers() {
       <input type="text" id="choosefname" placeholder="First name"/>
       <input type="text" id="chooselname" placeholder="Last name"/>
       <br></br> <br></br>
-     <input class="add" id="add" type="button" value="Add Customer Button"/>
+      <Popup trigger=
+                {<button> Add Customer Button </button>}
+                modal nested>
+                  {
+                    close => (
+                      <><div>First Name:</div><input type="text" id="first" placeholder="Ex.Fred" />
+                      <div>Last Name:</div><input type="text" id="last" placeholder="Ex.Durst" />
+                      <div>Email:</div><input type="text" id="mail" placeholder="fdchamp@gmail.com" />
+                      <div><button onClick={() => close()}>Cancel</button></div>
+                      <div><button id="sub" onClick={()=> speak(document.getElementById("first").value,document.getElementById("last").value,document.getElementById("mail").value)}>Submit</button></div></>
+                    )}
+      </Popup>
+      <Popup trigger=
+                {<button> Delete Customer Button </button>}
+                modal nested>
+                  {
+                    close => (
+                      <><div>First Name:</div><input type="text" id="first1" placeholder="Ex.Fred" />
+                      <div>Last Name:</div><input type="text" id="last1" placeholder="Ex.Durst" />
+                      <div>Email:</div><input type="text" id="mail1" placeholder="fdchamp@gmail.com" />
+                      <div><button onClick={() => close()}>Cancel</button></div>
+                      <div><button id="sub" onClick={()=> begone(document.getElementById("first1").value,document.getElementById("last1").value,document.getElementById("mail1").value)}>Submit</button></div></>
+                    )}
+      </Popup>
       <br></br>
+  
       <input class="list" id="list" type="button" value="Customer Seach Result"/>
       <input class="details" id="details" type="button" value="Customer Details"/>
       
