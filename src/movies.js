@@ -50,7 +50,7 @@ function Movies() {
     moviespot18.addEventListener("click", ()=>{getMovieDesc2(moviespot18.innerHTML)});
     moviespot19.addEventListener("click", ()=>{getMovieDesc2(moviespot19.innerHTML)});
     moviespot20.addEventListener("click", ()=>{getMovieDesc2(moviespot20.innerHTML)});
-    moviebutton.addEventListener("click", () =>{movieSearch(titlechoice.innerHTML, actorchoice.innerHTML, genrechoice.innerHTML)});
+    moviebutton.addEventListener("click", () =>{movieSearch(titlechoice.value, actorchoice.value, genrechoice.value)});
   }, []); 
 
   return (
