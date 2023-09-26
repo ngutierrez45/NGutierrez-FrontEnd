@@ -51,7 +51,7 @@ function App() {
         <script></script>
       </head>
       <body>
-        <p className="check">{!data ? "Loading..." : data}</p>
+       
         <div className="App">
           <p className="current">Home Page</p>
 
