@@ -33,6 +33,8 @@ function Customers() {
       <input type="text" id="choosefname" placeholder="First name"/>
       <input type="text" id="chooselname" placeholder="Last name"/>
       <br></br> <br></br>
+     <input class="add" id="add" type="button" value="Add Customer Button"/>
+      <br></br>
       <input class="list" id="list" type="button" value="Customer Seach Result"/>
       <input class="details" id="details" type="button" value="Customer Details"/>
       
