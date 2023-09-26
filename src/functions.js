@@ -160,6 +160,14 @@ export function top5(){
       if(response[0]){
      
         // Loop through the response array and display the movie titles
+        for (let i = 0; i < 20; i++) {
+          let movieTitle = response[1][i];
+          let number = i+1;
+          let spot = "movie" + number;
+          // Create a new <p> element to display the movie title
+          document.getElementById(spot).innerHTML = "";
+
+        }
         for (let i = 0; i < response[1].length; i++) {
           let movieTitle = response[1][i];
           let number = i+1;
@@ -167,6 +175,15 @@ export function top5(){
           // Create a new <p> element to display the movie title
           let movieElement = document.getElementById(spot);
           movieElement.innerHTML = movieTitle;
+
+        }
+      }else{
+        for (let i = 0; i < 20; i++) {
+          let movieTitle = response[1][i];
+          let number = i+1;
+          let spot = "movie" + number;
+          // Create a new <p> element to display the movie title
+          document.getElementById(spot).innerHTML = "";
 
         }
       }
@@ -208,7 +225,7 @@ export function top5(){
         let xhr = new XMLHttpRequest();
         xhr.addEventListener("load", customersent);
         xhr.responseType = "json";
-      
+       
         // Construct the query string based on non-empty input fields
         let params = [];
         if (id.trim() !== "") {
@@ -233,6 +250,14 @@ export function top5(){
           if(response[0]){
            // alert([response[2]]);//changing sql statement not working
             // Loop through the response array and display the movie titles
+            for (let i = 0; i < 20; i++) {
+              let number = i+1;
+              let spot = "cus" + number;
+              // Create a new <p> element to display the movie title
+             document.getElementById(spot).innerHTML="";    
+            }
+            
+           
             for (let i = 0; i < response[1].length; i++) {
               let email = response[1][i];
               let number = i+1;
@@ -242,10 +267,74 @@ export function top5(){
               emailElement.innerHTML = email;
     
             }
+          }else{
+            for (let i = 0; i < 20; i++) {
+              let number = i+1;
+              let spot = "cus" + number;
+              // Create a new <p> element to display the movie title
+             document.getElementById(spot).innerHTML="";    
+            }
           }
         }else{
           alert("Error reaching server");
         }
       } 
     
+      export function speak(name1, name2, mail1){
+        if(name1 !== "" && name2 !== "" && mail1 !== ""){
+          let xhr = new XMLHttpRequest();
+          xhr.addEventListener("load", speakDone);
+          xhr.responseType = "json";
+          let name = "name=" + encodeURIComponent("create");
+          let namef = "fname=" + encodeURIComponent(name1);
+          let namel = "lname=" + encodeURIComponent(name2);
+          let maile = "email=" + encodeURIComponent(mail1);
+          xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN5.php?" + name + "&" + namef + "&" + namel + "&" + maile);
+          xhr.send();
+        }else{  
+          alert("Make sure all credentials are filled");
+        }
+      }
+
+      export function speakDone(){
+        if(this.status === 200){
+          let response = this.response;
+          if(response[0]){
+            alert("Customer successfully created! You can close the popup now.");
+          }else{
+            alert("Customer creation failed because user already exists.");
+          }
+        }else{
+          alert("Error Reaching Server");
+      }
+    }
+
+    export function begone(name1, name2, mail1){
+      if(name1 !== "" && name2 !== "" && mail1 !== ""){
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", begoneDone);
+        xhr.responseType = "json";
+        let name = "name=" + encodeURIComponent("delete");
+        let namef = "fname=" + encodeURIComponent(name1);
+        let namel = "lname=" + encodeURIComponent(name2);
+        let maile = "email=" + encodeURIComponent(mail1);
+        xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN5.php?" + name + "&" + namef + "&" + namel + "&" + maile);
+        xhr.send();
+      }else{  
+        alert("Make sure all credentials are filled");
+      }
+    }
+
+    export function begoneDone(){
+      if(this.status === 200){
+        let response = this.response;
+        if(response[0]){
+          alert("Customer successfully deleted! You can close the popup now.");
+        }else{
+          alert("Customer deletion failed because user was not found.");
+        }
+      }else{
+        alert("Error Reaching Server");
+    }
+  }
       
