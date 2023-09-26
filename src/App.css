@@ -86,3 +86,30 @@ input.results{
   color: black;
   height: 10px;
 }
+
+table{
+  border: 1px solid black;
+  border-style: solid;
+ margin-left: 350px;
+}
+
+
+.column{
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+p.moviestuf{
+  height:100px;
+}
+
+p.actorstuf{
+  height: 100px;
+}
