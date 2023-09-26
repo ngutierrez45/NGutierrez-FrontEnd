@@ -47,3 +47,11 @@ input.details{
     width: 400px;
     }
 
+    input.add{
+      background-color: orange;
+  color: white;
+  border-color: white;
+  font-size: 25px;
+  margin-left: -40px;
+  width: 800px;
+  }
