@@ -14,7 +14,8 @@ STEPS
 4. Then enter npm start
 5. Now that the React app is running, the link below launches the page, makes an API fetch to the backend and prints the Hello world string
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser
+Or if you want to view the webpage hosted online visit [This](https://ngutierrez-frontend.onrender.com)
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
