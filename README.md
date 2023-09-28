@@ -15,6 +15,7 @@ STEPS
 5. Now that the React app is running, the link below launches the page, makes an API fetch to the backend and prints the Hello world string
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Or visit the host static site [Here](https://ngutierrez-frontend.onrender.com)
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
