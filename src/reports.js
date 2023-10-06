@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import jsPDF from "jspdf"; 
-import { customerSearch2 } from "./functions";
 
 function Reports() {
-
 
   return (
     <div className="App">
@@ -26,10 +24,4 @@ function Reports() {
   
   );
 }
-
-export default Reports;
-  
-  );
-}
-
 export default Reports;
