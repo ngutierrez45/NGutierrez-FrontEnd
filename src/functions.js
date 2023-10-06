@@ -161,10 +161,8 @@ export function top5(){
      
         // Loop through the response array and display the movie titles
         for (let i = 0; i < 20; i++) {
-          let movieTitle = response[1][i];
           let number = i+1;
           let spot = "movie" + number;
-          // Create a new <p> element to display the movie title
           document.getElementById(spot).innerHTML = "";
 
         }
@@ -172,17 +170,14 @@ export function top5(){
           let movieTitle = response[1][i];
           let number = i+1;
           let spot = "movie" + number;
-          // Create a new <p> element to display the movie title
           let movieElement = document.getElementById(spot);
           movieElement.innerHTML = movieTitle;
 
         }
       }else{
         for (let i = 0; i < 20; i++) {
-          let movieTitle = response[1][i];
           let number = i+1;
           let spot = "movie" + number;
-          // Create a new <p> element to display the movie title
           document.getElementById(spot).innerHTML = "";
 
         }
@@ -329,6 +324,7 @@ export function top5(){
       if(this.status === 200){
         let response = this.response;
         if(response[0]){
+
           alert("Customer successfully deleted! You can close the popup now.");
         }else{
           alert("Customer deletion failed because user was not found.");
@@ -337,4 +333,31 @@ export function top5(){
         alert("Error Reaching Server");
     }
   }
-      
+
+  export function attemptRent(location){
+    if(location !== "     "){
+           let xhr = new XMLHttpRequest();
+           xhr.addEventListener("load", rentCheck);
+           xhr.responseType = "json";
+           let name = "name=" + encodeURIComponent("rent");
+           let summary = "desc=" + encodeURIComponent(location);
+           xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN6.php?" + name + "&" + summary);
+           xhr.send();
+        }else{
+         alert("Select a movie First!");
+        }
+    }
+
+    export function rentCheck(){
+      if(this.status === 200){
+        let response = this.response;
+        if(response[0]){
+
+          alert("Movie successfully rented!");
+        }else{
+          alert("Failed to rent movie");
+        }
+      }else{
+        alert("Error Reaching Server");
+    }
+  }
