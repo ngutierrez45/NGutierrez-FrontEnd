@@ -380,16 +380,90 @@ export function top5(){
       if(this.status === 200){
         let response = this.response;
         if(response[0]){
+         
           document.getElementById("identify").innerHTML=response[1][0].id;
           document.getElementById("namefirst").innerHTML=response[1][0].fname;
           document.getElementById("namelast").innerHTML=response[1][0].lname;
           document.getElementById("address").innerHTML=response[1][0].address;
           document.getElementById("cre-date").innerHTML=response[1][0].create;
           document.getElementById("up-date").innerHTML=response[1][0].update;
+
+          for (let i = 0; i < 25; i++) {
+            let number = i+1;
+            let spot = "rent" + number;
+            document.getElementById(spot).innerHTML="";
+          }
+
+          for (let i = 0; i < 25; i++) {
+            let movieTitle = response[2][i];
+            let number = i+1;
+            let spot = "rent" + number;
+            let movieElement = document.getElementById(spot);
+            movieElement.innerHTML = movieTitle;
+          }
         }else{
           alert("Failed to find customer");
         }
       }else{
         alert("Error Reaching Server");
+    }
+  }
+
+  export function customerSearch2(id, fname, lname) {
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", customerSent2);
+    xhr.responseType = "json";
+   
+    // Construct the query string based on non-empty input fields
+    let params = [];
+    if (id.trim() !== "") {
+      params.push("ID=" + encodeURIComponent(id));
+    }
+    if (fname.trim() !== "") {
+      params.push("fname=" + encodeURIComponent(fname));
+    }
+    if (lname.trim() !== "") {
+      params.push("lname=" + encodeURIComponent(lname));
+    }
+  
+    // Join the parameters with "&" to create the final query string
+    let queryString = params.join("&");
+    xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN4.php?" + queryString);
+    xhr.send();
+  }
+
+  export function customerSent2(){
+    if(this.status === 200){
+      let response = this.response;
+      if(response[0]){
+       // alert([response[2]]);//changing sql statement not working
+        // Loop through the response array and display the movie titles
+        for (let i = 0; i < 20; i++) {
+          let number = i+1;
+          let spot = "cus" + number;
+          // Create a new <p> element to display the movie title
+         document.getElementById(spot).innerHTML="";    
+        }
+        
+       
+        for (let i = 0; i < response[1].length; i++) {
+          let email = response[1][i];
+          let number = i+1;
+          let spot = "cus" + number;
+          // Create a new <p> element to display the movie title
+          let emailElement = document.getElementById(spot);
+          emailElement.innerHTML = email;
+
+        }
+      }else{
+        for (let i = 0; i < 20; i++) {
+          let number = i+1;
+          let spot = "cus" + number;
+          // Create a new <p> element to display the movie title
+         document.getElementById(spot).innerHTML="";    
+        }
+      }
+    }else{
+      alert("Error reaching server");
     }
   }
