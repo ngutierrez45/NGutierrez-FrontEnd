@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./movies.css";
-import { movieSearch, getMovieDesc2 } from "./functions";
+import { movieSearch, getMovieDesc2, attemptRent } from "./functions";
 function Movies() {
 
   useEffect(() => {
@@ -29,6 +29,8 @@ function Movies() {
     const moviespot18 = document.getElementById("movie18");
     const moviespot19 = document.getElementById("movie19");
     const moviespot20 = document.getElementById("movie20");
+    const describe = document.getElementById("desc1");
+    const rentButton = document.getElementById("rent");
     
     moviespot1.addEventListener("click", ()=>{getMovieDesc2(moviespot1.innerHTML)});
     moviespot2.addEventListener("click", ()=>{getMovieDesc2(moviespot2.innerHTML)});
@@ -50,7 +52,8 @@ function Movies() {
     moviespot18.addEventListener("click", ()=>{getMovieDesc2(moviespot18.innerHTML)});
     moviespot19.addEventListener("click", ()=>{getMovieDesc2(moviespot19.innerHTML)});
     moviespot20.addEventListener("click", ()=>{getMovieDesc2(moviespot20.innerHTML)});
-    moviebutton.addEventListener("click", () =>{movieSearch(titlechoice.value, actorchoice.value, genrechoice.value)});
+    moviebutton.addEventListener("click", ()=>{movieSearch(titlechoice.value, actorchoice.value, genrechoice.value)});
+    rentButton.addEventListener("click", ()=>{attemptRent(describe.innerHTML)});
   }, []); 
 
   return (
@@ -165,6 +168,7 @@ function Movies() {
           <th id="cat1">     </th>
         </tr>
       </table>
+      <input type="button" className="rent" id="rent" value="Rent This Movie"/>
     </div>
   );
 }
