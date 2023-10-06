@@ -361,3 +361,35 @@ export function top5(){
         alert("Error Reaching Server");
     }
   }
+
+  export function cussDetails(location){
+    if(location !== ""){
+           let xhr = new XMLHttpRequest();
+           xhr.addEventListener("load", cussCheck);
+           xhr.responseType = "json";
+           let name = "name=" + encodeURIComponent("find");
+           let elecmail = "email=" + encodeURIComponent(location);
+           xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN7.php?" + name + "&" + elecmail);
+           xhr.send();
+        }else{
+         alert("Load the Customers first!");
+        }
+    }
+
+    export function cussCheck(){
+      if(this.status === 200){
+        let response = this.response;
+        if(response[0]){
+          document.getElementById("identify").innerHTML=response[1][0].id;
+          document.getElementById("namefirst").innerHTML=response[1][0].fname;
+          document.getElementById("namelast").innerHTML=response[1][0].lname;
+          document.getElementById("address").innerHTML=response[1][0].address;
+          document.getElementById("cre-date").innerHTML=response[1][0].create;
+          document.getElementById("up-date").innerHTML=response[1][0].update;
+        }else{
+          alert("Failed to find customer");
+        }
+      }else{
+        alert("Error Reaching Server");
+    }
+  }
