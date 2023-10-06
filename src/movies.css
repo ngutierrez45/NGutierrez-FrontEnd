@@ -53,3 +53,9 @@ input.results{
 input.results2{
     height: 400px;
 }
+
+input.rent{
+    background-color: green;
+    color: white;
+    margin-left: -720px;
+}
