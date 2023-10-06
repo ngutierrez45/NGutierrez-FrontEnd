@@ -175,6 +175,7 @@ function Customers() {
           </tr>
         </table>
       </div>
+      <div className="info">
       <table>
       <tr>
         <th>Customer Details</th>
@@ -204,6 +205,87 @@ function Customers() {
           <th id="up-date">     </th>
         </tr>
       </table>
+      <table className="rents">
+      <tr>
+        <th>Rented Movies</th>
+      </tr>
+        <tr>
+          <th id="rent1">     </th>
+        </tr>
+        <tr>
+          <th id="rent2">     </th>
+        </tr>
+        <tr>
+          <th id="rent3">     </th>
+        </tr>
+        <tr>
+          <th id="rent4">     </th>
+        </tr>
+        <tr>
+          <th id="rent5">     </th>
+        </tr>
+        <tr>
+          <th id="rent6">     </th>
+        </tr>
+        <tr>
+          <th id="rent7">     </th>
+        </tr>
+        <tr>
+          <th id="rent8">     </th>
+        </tr>
+        <tr>
+          <th id="rent9">     </th>
+        </tr>
+        <tr>
+          <th id="rent10">     </th>
+        </tr>
+        <tr>
+          <th id="rent11">     </th>
+        </tr>
+        <tr>
+          <th id="rent12">     </th>
+        </tr>
+        <tr>
+          <th id="rent13">     </th>
+        </tr>
+        <tr>
+          <th id="rent14">     </th>
+        </tr>
+        <tr>
+          <th id="rent15">     </th>
+        </tr>
+        <tr>
+          <th id="rent16">     </th>
+        </tr>
+        <tr>
+          <th id="rent17">     </th>
+        </tr>
+        <tr>
+          <th id="rent18">     </th>
+        </tr>
+        <tr>
+          <th id="rent19">     </th>
+        </tr>
+        <tr>
+          <th id="rent20">     </th>
+        </tr>
+        <tr>
+          <th id="rent21">     </th>
+        </tr>
+        <tr>
+          <th id="rent22">     </th>
+        </tr>
+        <tr>
+          <th id="rent23">     </th>
+        </tr>
+        <tr>
+          <th id="rent24">     </th>
+        </tr>
+        <tr>
+          <th id="rent25">     </th>
+        </tr>
+      </table>
+      </div>
     </div>
   
   );
