@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./customers.css";
 import { customerSearch } from "./functions";
 import Popup from 'reactjs-popup';
-import { speak, begone } from "./functions";
+import { speak, begone, cussDetails } from "./functions";
 
 function Customers() {
   useEffect(() => {
@@ -11,9 +11,49 @@ function Customers() {
     const idchoice = document.getElementById("chooseid");
     const fnamechoice = document.getElementById("choosefname");
     const lnamechoice = document.getElementById("chooselname");
+    const customer1 = document.getElementById("cus1");
+    const customer2 = document.getElementById("cus2");
+    const customer3 = document.getElementById("cus3");
+    const customer4 = document.getElementById("cus4");
+    const customer5 = document.getElementById("cus5");
+    const customer6 = document.getElementById("cus6");
+    const customer7 = document.getElementById("cus7");
+    const customer8 = document.getElementById("cus8");
+    const customer9 = document.getElementById("cus9");
+    const customer10 = document.getElementById("cus10");
+    const customer11 = document.getElementById("cus11");
+    const customer12 = document.getElementById("cus12");
+    const customer13 = document.getElementById("cus13");
+    const customer14 = document.getElementById("cus14");
+    const customer15 = document.getElementById("cus15");
+    const customer16 = document.getElementById("cus16");
+    const customer17 = document.getElementById("cus17");
+    const customer18 = document.getElementById("cus18");
+    const customer19 = document.getElementById("cus19");
+    const customer20 = document.getElementById("cus20");
     
    cusbutton.addEventListener("click", () =>{customerSearch(idchoice.value, fnamechoice.value, lnamechoice.value)});
   
+   customer1.addEventListener("click",()=>{cussDetails(customer1.innerHTML)});
+   customer2.addEventListener("click",()=>{cussDetails(customer2.innerHTML)});
+   customer3.addEventListener("click",()=>{cussDetails(customer3.innerHTML)});
+   customer4.addEventListener("click",()=>{cussDetails(customer4.innerHTML)});
+   customer5.addEventListener("click",()=>{cussDetails(customer5.innerHTML)});
+   customer6.addEventListener("click",()=>{cussDetails(customer6.innerHTML)});
+   customer7.addEventListener("click",()=>{cussDetails(customer7.innerHTML)});
+   customer8.addEventListener("click",()=>{cussDetails(customer8.innerHTML)});
+   customer9.addEventListener("click",()=>{cussDetails(customer9.innerHTML)});
+   customer10.addEventListener("click",()=>{cussDetails(customer10.innerHTML)});
+   customer11.addEventListener("click",()=>{cussDetails(customer11.innerHTML)});
+   customer12.addEventListener("click",()=>{cussDetails(customer12.innerHTML)});
+   customer13.addEventListener("click",()=>{cussDetails(customer13.innerHTML)});
+   customer14.addEventListener("click",()=>{cussDetails(customer14.innerHTML)});
+   customer15.addEventListener("click",()=>{cussDetails(customer15.innerHTML)});
+   customer16.addEventListener("click",()=>{cussDetails(customer16.innerHTML)});
+   customer17.addEventListener("click",()=>{cussDetails(customer17.innerHTML)});
+   customer18.addEventListener("click",()=>{cussDetails(customer18.innerHTML)});
+   customer19.addEventListener("click",()=>{cussDetails(customer19.innerHTML)});
+   customer20.addEventListener("click",()=>{cussDetails(customer20.innerHTML)});
    
   }, []);
 
@@ -64,7 +104,7 @@ function Customers() {
       <br></br>
   
       <input class="list" id="list" type="button" value="Customer Seach Result"/>
-      <input class="details" id="details" type="button" value="Customer Details"/>
+      <input class="details" id="details" type="button" value="Customer Details Below"/>
       
       <br></br>   <br></br>
 
@@ -135,6 +175,35 @@ function Customers() {
           </tr>
         </table>
       </div>
+      <table>
+      <tr>
+        <th>Customer Details</th>
+      </tr>
+        <tr>
+          <th>ID:</th>
+          <th id="identify">     </th>
+        </tr>
+        <tr>
+          <th>First Name:</th>
+          <th id="namefirst">     </th>
+        </tr>
+        <tr>
+          <th>Last Name:</th>
+          <th id="namelast">     </th>
+        </tr>
+        <tr>
+          <th>Address ID:</th>
+          <th id="address">     </th>
+        </tr>
+        <tr>
+          <th>Creation Date:</th>
+          <th id="cre-date">     </th>
+        </tr>
+        <tr>
+          <th>Last Update:</th>
+          <th id="up-date">     </th>
+        </tr>
+      </table>
     </div>
   
   );
