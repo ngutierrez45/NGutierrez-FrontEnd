@@ -1,3 +1,4 @@
+import jsPDF from "jspdf";
 
 export function top5(){
     let xhr = new XMLHttpRequest();
@@ -436,34 +437,18 @@ export function top5(){
     if(this.status === 200){
       let response = this.response;
       if(response[0]){
-       // alert([response[2]]);//changing sql statement not working
-        // Loop through the response array and display the movie titles
-        for (let i = 0; i < 20; i++) {
-          let number = i+1;
-          let spot = "cus" + number;
-          // Create a new <p> element to display the movie title
-         document.getElementById(spot).innerHTML="";    
-        }
-        
-       
-        for (let i = 0; i < response[1].length; i++) {
-          let email = response[1][i];
-          let number = i+1;
-          let spot = "cus" + number;
-          // Create a new <p> element to display the movie title
-          let emailElement = document.getElementById(spot);
-          emailElement.innerHTML = email;
-
-        }
-      }else{
-        for (let i = 0; i < 20; i++) {
-          let number = i+1;
-          let spot = "cus" + number;
-          // Create a new <p> element to display the movie title
-         document.getElementById(spot).innerHTML="";    
-        }
+        const doc = new jsPDF();
+      doc.text(10, 10, "Customer Emails who have rented a movie:");
+      let yPosition = 30;
+      let i = 0;
+      while (i < response[1].length) {
+        doc.text(20, yPosition, response[1][i]);
+        yPosition += 10;
+        i++;
       }
+      doc.save("customer_emails.pdf");
     }else{
       alert("Error reaching server");
     }
   }
+}
