@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./customers.css";
 import { customerSearch } from "./functions";
 import Popup from 'reactjs-popup';
-import { speak, begone, cussDetails } from "./functions";
+import { speak, begone, cussDetails, changeCus } from "./functions";
 
 function Customers() {
   useEffect(() => {
@@ -78,7 +78,7 @@ function Customers() {
       <input type="text" id="chooselname" placeholder="Last name"/>
       <br></br> <br></br>
       <Popup trigger=
-                {<button> Add Customer Button </button>}
+                {<button> Add Customer </button>}
                 modal nested>
                   {
                     close => (
@@ -90,7 +90,7 @@ function Customers() {
                     )}
       </Popup>
       <Popup trigger=
-                {<button> Delete Customer Button </button>}
+                {<button> Delete Customer </button>}
                 modal nested>
                   {
                     close => (
@@ -99,6 +99,19 @@ function Customers() {
                       <div>Email:</div><input type="text" id="mail1" placeholder="fdchamp@gmail.com" />
                       <div><button onClick={() => close()}>Cancel</button></div>
                       <div><button id="sub" onClick={()=> begone(document.getElementById("first1").value,document.getElementById("last1").value,document.getElementById("mail1").value)}>Submit</button></div></>
+                    )}
+      </Popup>
+      <Popup trigger=
+                {<button> Update Customer Details </button>}
+                modal nested>
+                  {
+                    close => (
+                      <><div>Select Customer By ID:</div><input type="text" id="ident" placeholder="4" />
+                      <div>Change First Name:</div><input type="text" id="first2" placeholder="Ex.Fred" />
+                      <div>Change Last Name:</div><input type="text" id="last2" placeholder="Ex.Durst" />
+                      <div>Change Email:</div><input type="text" id="mail2" placeholder="fdchamp@gmail.com" />
+                      <div><button onClick={() => close()}>Cancel</button></div>
+                      <div><button id="sub" onClick={()=> changeCus(document.getElementById("ident").value,document.getElementById("first2").value,document.getElementById("last2").value,document.getElementById("mail2").value)}>Submit</button></div></>
                     )}
       </Popup>
       <br></br>
