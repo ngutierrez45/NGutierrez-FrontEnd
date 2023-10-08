@@ -136,8 +136,7 @@ export function top5(){
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("load", moviesent);
     xhr.responseType = "json";
-  
-    // Construct the query string based on non-empty input fields
+
     let params = [];
     if (title.trim() !== "") {
       params.push("title=" + encodeURIComponent(title));
@@ -149,7 +148,6 @@ export function top5(){
       params.push("genre=" + encodeURIComponent(genre));
     }
   
-    // Join the parameters with "&" to create the final query string
     let queryString = params.join("&");
     xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN2.php?" + queryString);
     xhr.send();
@@ -160,7 +158,6 @@ export function top5(){
       let response = this.response;
       if(response[0]){
      
-        // Loop through the response array and display the movie titles
         for (let i = 0; i < 20; i++) {
           let number = i+1;
           let spot = "movie" + number;
@@ -222,7 +219,6 @@ export function top5(){
         xhr.addEventListener("load", customersent);
         xhr.responseType = "json";
        
-        // Construct the query string based on non-empty input fields
         let params = [];
         if (id.trim() !== "") {
           params.push("ID=" + encodeURIComponent(id));
@@ -234,7 +230,6 @@ export function top5(){
           params.push("lname=" + encodeURIComponent(lname));
         }
       
-        // Join the parameters with "&" to create the final query string
         let queryString = params.join("&");
         xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN4.php?" + queryString);
         xhr.send();
@@ -244,12 +239,9 @@ export function top5(){
         if(this.status === 200){
           let response = this.response;
           if(response[0]){
-           // alert([response[2]]);//changing sql statement not working
-            // Loop through the response array and display the movie titles
             for (let i = 0; i < 20; i++) {
               let number = i+1;
               let spot = "cus" + number;
-              // Create a new <p> element to display the movie title
              document.getElementById(spot).innerHTML="";    
             }
             
@@ -258,7 +250,6 @@ export function top5(){
               let email = response[1][i];
               let number = i+1;
               let spot = "cus" + number;
-              // Create a new <p> element to display the movie title
               let emailElement = document.getElementById(spot);
               emailElement.innerHTML = email;
     
@@ -267,7 +258,6 @@ export function top5(){
             for (let i = 0; i < 20; i++) {
               let number = i+1;
               let spot = "cus" + number;
-              // Create a new <p> element to display the movie title
              document.getElementById(spot).innerHTML="";    
             }
           }
@@ -335,15 +325,20 @@ export function top5(){
     }
   }
 
-  export function attemptRent(location){
+  export function attemptRent(location, id){
     if(location !== "     "){
+      if(id !== ""){
            let xhr = new XMLHttpRequest();
            xhr.addEventListener("load", rentCheck);
            xhr.responseType = "json";
            let name = "name=" + encodeURIComponent("rent");
            let summary = "desc=" + encodeURIComponent(location);
-           xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN6.php?" + name + "&" + summary);
+           let ident = "id=" + encodeURIComponent(id);
+           xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN6.php?" + name + "&" + summary + "&" + ident);
            xhr.send();
+      }else{
+        alert("Please provide ID before renting");
+      }
         }else{
          alert("Select a movie First!");
         }
@@ -356,7 +351,7 @@ export function top5(){
 
           alert("Movie successfully rented!");
         }else{
-          alert("Failed to rent movie");
+          alert("Failed to rent movie because the ID was invalid");
         }
       }else{
         alert("Error Reaching Server");
@@ -415,7 +410,6 @@ export function top5(){
     xhr.addEventListener("load", customerSent2);
     xhr.responseType = "json";
    
-    // Construct the query string based on non-empty input fields
     let params = [];
     if (id.trim() !== "") {
       params.push("ID=" + encodeURIComponent(id));
@@ -427,28 +421,80 @@ export function top5(){
       params.push("lname=" + encodeURIComponent(lname));
     }
   
-    // Join the parameters with "&" to create the final query string
     let queryString = params.join("&");
-    xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN4.php?" + queryString);
+    xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN9.php?" + queryString);
     xhr.send();
   }
 
-  export function customerSent2(){
-    if(this.status === 200){
+  export function customerSent2() {
+    if (this.status === 200) {
       let response = this.response;
-      if(response[0]){
+      if (response[0]) {
         const doc = new jsPDF();
-      doc.text(10, 10, "Customer Emails who have rented a movie:");
-      let yPosition = 30;
-      let i = 0;
-      while (i < response[1].length) {
-        doc.text(20, yPosition, response[1][i]);
-        yPosition += 10;
-        i++;
+  
+        const pageHeight = doc.internal.pageSize.height;
+        let yPosition = 30;
+        let currentPage = 1;
+  
+        doc.text(10, 10, "Customer Emails who have an unreturned movie:");
+  
+        let i = 0;
+        while (i < response[1].length) {
+          doc.text(20, yPosition, response[1][i]);
+          yPosition += 10;
+          i++;
+  
+          if (yPosition + 10 > pageHeight) {
+            doc.addPage();
+            currentPage++;
+            yPosition = 10; 
+          }
+  
+          doc.setPage(currentPage);
+          doc.text(10, pageHeight - 10, `Page ${currentPage}`);
+        }
+  
+        doc.save("customer_emails.pdf");
+      } else {
+        alert("Error reaching server");
       }
-      doc.save("customer_emails.pdf");
-    }else{
-      alert("Error reaching server");
     }
   }
+
+export function changeCus(ident, name1, name2, mail1){
+  if(ident !== ""){
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", cusChanged);
+    xhr.responseType = "json";
+    let params = [];
+    params.push("id=" + encodeURIComponent(ident));
+    if (name1.trim() !== "") {
+      params.push("fname=" + encodeURIComponent(name1));
+    }
+    if (name2.trim() !== "") {
+      params.push("lname=" + encodeURIComponent(name2));
+    }
+    if (mail1.trim() !== "") {
+      params.push("email=" + encodeURIComponent(mail1));
+    }
+    let queryString = params.join("&");
+    xhr.open("GET", "https://web.njit.edu/~nag45/SQLRUN8.php?" + queryString);
+    xhr.send();
+  }else{  
+    alert("Make sure you select a customer to change via ID");
+  }
+}
+
+export function cusChanged(){
+  if(this.status === 200){
+    let response = this.response;
+    if(response[0]){
+
+      alert("Customer successfully updated! You can close the popup now.");
+    }else{
+      alert("Customer deletion failed because user was not found.");
+    }
+  }else{
+    alert("Error Reaching Server");
+}
 }
