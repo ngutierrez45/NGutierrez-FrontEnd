@@ -20,7 +20,6 @@ function App() {
       </script>
     </head>
     <body>
-    <p class="check">{!data ? "Loading..." : data}</p>
     <div className="App">
       <p class="current">Home Page</p>
 
