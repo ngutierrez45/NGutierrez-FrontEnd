@@ -62,6 +62,14 @@ input.details{
   }
   
   table.rents{
+    margin-left: 100px;
+  
+  }
+
+  table.returns{
+    margin-left: 50px;
+  }
+  table.rents{
     margin-right: 500px;
     width: 500%;
   }
