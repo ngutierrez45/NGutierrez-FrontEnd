@@ -7,10 +7,7 @@ function App() {
   const [data, setData] = React.useState(null);
 
   useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-
+ 
       
     const button4 = document.getElementById("5movies");
     const button5 = document.getElementById("moviedetails");
@@ -51,7 +48,6 @@ function App() {
         <script></script>
       </head>
       <body>
-        <p className="check">{!data ? "Loading..." : data}</p>
         <div className="App">
           <p className="current">Home Page</p>
           <Link to="/movies">
