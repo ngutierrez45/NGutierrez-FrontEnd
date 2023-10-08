@@ -31,6 +31,7 @@ function Movies() {
     const moviespot20 = document.getElementById("movie20");
     const describe = document.getElementById("desc1");
     const rentButton = document.getElementById("rent");
+    const idCheck = document.getElementById("giveid");
     
     moviespot1.addEventListener("click", ()=>{getMovieDesc2(moviespot1.innerHTML)});
     moviespot2.addEventListener("click", ()=>{getMovieDesc2(moviespot2.innerHTML)});
@@ -53,7 +54,7 @@ function Movies() {
     moviespot19.addEventListener("click", ()=>{getMovieDesc2(moviespot19.innerHTML)});
     moviespot20.addEventListener("click", ()=>{getMovieDesc2(moviespot20.innerHTML)});
     moviebutton.addEventListener("click", ()=>{movieSearch(titlechoice.value, actorchoice.value, genrechoice.value)});
-    rentButton.addEventListener("click", ()=>{attemptRent(describe.innerHTML)});
+    rentButton.addEventListener("click", ()=>{attemptRent(describe.innerHTML, idCheck.value)});
   }, []); 
 
   return (
@@ -168,9 +169,13 @@ function Movies() {
           <th id="cat1">     </th>
         </tr>
       </table>
+      <br></br>
       <input type="button" className="rent" id="rent" value="Rent This Movie"/>
+      <input type="text" id="giveid" placeholder="Enter ID to rent movie"/>
+     
     </div>
   );
 }
 
 export default Movies;
+
