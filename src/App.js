@@ -43,7 +43,7 @@ function App() {
     actor5Button.addEventListener("click", () =>{getActorTop5(actor5Button.innerHTML)});
 
    
-  }, []); // Empty dependency array means this effect runs once after the initial render.
+  }, []); 
 
   return (
     <html>
@@ -51,10 +51,9 @@ function App() {
         <script></script>
       </head>
       <body>
-       
+        <p className="check">{!data ? "Loading..." : data}</p>
         <div className="App">
           <p className="current">Home Page</p>
-
           <Link to="/movies">
             <input className="m" id="movies" type="button" value="Movies" />
           </Link>
@@ -66,12 +65,12 @@ function App() {
           </Link>
           <br></br> <br></br>
 
-          <input className="sqlm" id="5movies" type="button" value="List of Movies - Top 5 Rented Movies" />
+          <input className="sqlm" data-testid="5movies" id="5movies" type="button" value="List of Movies - Top 5 Rented Movies" />
           <input className="sqlmd" id="moviedetails" type="button" value="Movie Details" />
 
           <br></br> <br></br>
 
-          <input className="sqla" id="actors" type="button" value="List of Actors - Top 5 Actors by # of Films" />
+          <input className="sqla" data-testid="actors" id="actors" type="button" value="List of Actors - Top 5 Actors by # of Films" />
           <input className="sqlad" id="actordetails" type="button" value="Actor Details" />
 
           <br></br> <br></br>
@@ -84,7 +83,7 @@ function App() {
             </tr>
             <tr>
               <th>1</th>
-              <th id="row1"></th>
+              <th data-testid="row1" id="row1"></th>
             </tr>
             <tr>
               <th>2</th>
@@ -113,7 +112,7 @@ function App() {
             </tr>
             <tr>
               <th>1</th>
-              <th id="row1-1"></th>
+              <th data-testid="row1-1" id="row1-1"></th>
               <th id="row1-12"></th>
             </tr>
             <tr>
@@ -200,5 +199,5 @@ function App() {
     </html>
   );
 }
-
 export default App;
+
