@@ -298,6 +298,86 @@ function Customers() {
           <th id="rent25">     </th>
         </tr>
       </table>
+      <table className="returns">
+      <tr>
+        <th>Return Status</th>
+      </tr>
+        <tr>
+          <th id="status1">     </th>
+        </tr>
+        <tr>
+          <th id="status2">     </th>
+        </tr>
+        <tr>
+          <th id="status3">     </th>
+        </tr>
+        <tr>
+          <th id="status4">     </th>
+        </tr>
+        <tr>
+          <th id="status5">     </th>
+        </tr>
+        <tr>
+          <th id="status6">     </th>
+        </tr>
+        <tr>
+          <th id="status7">     </th>
+        </tr>
+        <tr>
+          <th id="status8">     </th>
+        </tr>
+        <tr>
+          <th id="status9">     </th>
+        </tr>
+        <tr>
+          <th id="status10">     </th>
+        </tr>
+        <tr>
+          <th id="status11">     </th>
+        </tr>
+        <tr>
+          <th id="status12">     </th>
+        </tr>
+        <tr>
+          <th id="status13">     </th>
+        </tr>
+        <tr>
+          <th id="status14">     </th>
+        </tr>
+        <tr>
+          <th id="status15">     </th>
+        </tr>
+        <tr>
+          <th id="status16">     </th>
+        </tr>
+        <tr>
+          <th id="status17">     </th>
+        </tr>
+        <tr>
+          <th id="status18">     </th>
+        </tr>
+        <tr>
+          <th id="status19">     </th>
+        </tr>
+        <tr>
+          <th id="status20">     </th>
+        </tr>
+        <tr>
+          <th id="status21">     </th>
+        </tr>
+        <tr>
+          <th id="status22">     </th>
+        </tr>
+        <tr>
+          <th id="status23">     </th>
+        </tr>
+        <tr>
+          <th id="status24">     </th>
+        </tr>
+        <tr>
+          <th id="status25">     </th>
+        </tr>
+      </table>
       </div>
     </div>
   
