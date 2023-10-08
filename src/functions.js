@@ -397,6 +397,17 @@ export function top5(){
             let movieElement = document.getElementById(spot);
             movieElement.innerHTML = movieTitle;
           }
+          for( let y =0; y < 25; y++){
+            let n = y+1;
+            let s = "status" + n;
+            let speck = document.getElementById(s);
+            if(response[3][y] != null){
+              speck.innerHTML="RETURNED";
+            }else{
+              speck.innerHTML="NOT RETURNED";
+            }
+          }
+        
         }else{
           alert("Failed to find customer");
         }
